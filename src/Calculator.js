@@ -26,6 +26,8 @@ for(let button=0; button<operationsButtonSymbols.length; button++){
     operationButtonElement.addEventListener("click", ()=>{
         if(operationsButtonSymbols[button] === "DEL")
             backSpace();
+        if(operationsButtonSymbols[button] === "=")
+            calculation();
         else
             textField.innerHTML += operationsButtonSymbols[button]
             
@@ -38,5 +40,6 @@ const backSpace = () =>{
 }
 
 const calculation = () =>{
-    answerSection.innerHTML = Function(`return(${textField.innerHTML};)`)();
+    answerSection.innerHTML = Function(`return(${textField.innerHTML})`)();
+    return answerSection;
 }
