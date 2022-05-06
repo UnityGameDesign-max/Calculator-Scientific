@@ -4,19 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../src/Calculator.js"></script>
+    <script defer src="../src/Calculator.js"></script>
     <link rel="stylesheet" href="../styles/style.css">
     <title>Calculator</title>
 </head>
 <body>
     <section class="calculator">
         <section class="calculator__top">
-            <p class="calculator__top-field">sin(25)</p>
-            <p class="calculator__top-answer">0.42261826</p>
+            <p id="calculator__top-field" class="calculator__top-field"></p>
+            <p id="calculator__top-answer" class="calculator__top-answer">0.42261826</p>
         </section>
         <section class="calculator__bottom">
-            <section class="calculator___bottom-scientific-button"></section>
-            <section class="calculator___bottom-normal-button"></section>
+            <section id="calculator___bottom-scientific-button" class="calculator___bottom-scientific-button"></section>
+            <section class="calculator___bottom-normal-button">
+                <section id="calculator__bottom-normal-button-numeric" class="calculator__bottom-normal-button-numeric"></section>
+                <section id="calculator__bottom-normal-button-operations" class="calculator__bottom-normal-button-operations"></section>
+            </section>
         </section>
     </section>
 </body>

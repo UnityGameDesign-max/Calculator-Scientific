@@ -5,22 +5,50 @@ body{
 }
 .calculator{
     display: grid;
-    padding-block: 9em;
+    margin-block: 5em;
     place-items: center;    
 }
 .calculator__top{
     position: relative;
     background-color: var(--COLOR-PRIMARY);
-    padding: 9em;
+    padding: 11em;
     color: var(--COLOR-TERTIRY);
     border-radius: 23px 23px 0 0;
+    box-shadow: 0.2px 2px 6px rgba(128, 128, 128, 0.329);
 }
 .calculator__top-field{
     position: absolute;
+    padding: 0.3em;
     top: 35px;
     left: 40px;
 }
 
 .calculator__top-answer{
     font-weight: 600;
+}
+
+.calculator__bottom{
+    background-color: var(--COLOR-TERTIRY);
+    padding: 11em 2.37em;
+    border-radius: 0 0 23px 23px;
+    box-shadow: 0.2px 2px 6px rgba(128, 128, 128, 0.329);
+}
+
+.calculator-styled-buttons{
+    border: none;
+    padding: 0.7em 0.8em;
+    margin-right: 0.5em;
+    margin-bottom: 0.9em;
+    color: var(--COLOR-SECONDARY);
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: background 0.4s;
+    background-color: var(--COLOR-TERTIARY-200);
+}
+
+.calculator-styled-buttons:active{
+    background-color: #dce2e7;
+    background-size: 100%;
+    transition: background 0s;
 }
