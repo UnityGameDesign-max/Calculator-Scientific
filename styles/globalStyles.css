@@ -1,0 +1,12 @@
+
+:root{
+    --COLOR-PRIMARY: #2c4462e0;
+    --COLOR-SECONDARY: #D35152;
+    --COLOR-TERTIRY: #fff;
+    --COLOR-TERTIARY-200: #F2F2F2;
+}
+
+*{
+    margin: 0;
+    box-sizing: border-box;
+}

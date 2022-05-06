@@ -1,0 +1,26 @@
+@import "./globalStyles.css";
+
+body{
+    background-color: var(--COLOR-TERTIARY-200);
+}
+.calculator{
+    display: grid;
+    padding-block: 9em;
+    place-items: center;    
+}
+.calculator__top{
+    position: relative;
+    background-color: var(--COLOR-PRIMARY);
+    padding: 9em;
+    color: var(--COLOR-TERTIRY);
+    border-radius: 23px 23px 0 0;
+}
+.calculator__top-field{
+    position: absolute;
+    top: 35px;
+    left: 40px;
+}
+
+.calculator__top-answer{
+    font-weight: 600;
+}
