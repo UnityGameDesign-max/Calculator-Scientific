@@ -1,7 +1,7 @@
 
 const numericButtonSymbols = ["7", "8", "9", "4", "5", "6", "1", "2", "3", "0", "."];
 const operationsButtonSymbols = ["DEL", "AC", "*", "/", "+", "-", "ANS", "="];
-const scientificSymbols = ["Abs", "Log", "sin", "cos", "tan", "(", ")", "ln"]
+const scientificSymbols = ["Abs", "Log", "sin", "cos", "tan", "(", ")", "ln", "%", "n!", "e", "x<sup>2</sup>", "x<sup>3</sup>", "x<sup>y</sup>"]
 const textField = document.getElementById("calculator__top-field");
 const numericButtonSection = document.getElementById("calculator__bottom-normal-button-numeric");
 const operationsButtonSection = document.getElementById("calculator__bottom-normal-button-operations");
@@ -19,7 +19,7 @@ for(let button=0; button<numericButtonSymbols.length; button++){
     numericButtonSection.appendChild(NormalbuttonElement);
 }
 
-for(let button=0; button< scientificSymbols.length; button++){
+for(let button=0; button<scientificSymbols.length; button++){
     const scientificButtonElement = document.createElement("button");
     scientificButtonElement.innerHTML = scientificSymbols[button];
     scientificButtonElement.classList.add("calculator-styled-buttons");

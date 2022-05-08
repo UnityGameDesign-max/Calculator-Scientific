@@ -34,6 +34,9 @@ body{
 }
 
 .calculator__bottom{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: var(--COLOR-TERTIRY);
     width: 370px;
     height: 400px;
@@ -44,9 +47,11 @@ body{
     display: flex;
     justify-content: center;
 }
-.calculator__bottom-scientific-button{
+.calculator___bottom-scientific-button{
+    margin: 1em 4em;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.3em;
 }
 
 .calculator__bottom-normal-button-numeric{
