@@ -1,7 +1,11 @@
 
 const numericButtonSymbols = ["7", "8", "9", "4", "5", "6", "1", "2", "3", "0", "."];
 const operationsButtonSymbols = ["DEL", "AC", "*", "/", "+", "-", "ANS", "="];
-const scientificSymbols = ["Abs", "Log", "sin", "cos", "tan", "(", ")", "ln", "%", "n!", "e", "x<sup>2</sup>", "x<sup>3</sup>", "x<sup>y</sup>"]
+const scientificSymbols = [
+    "Abs", "Log", "sin", "cos", "tan", "(" , ")", 
+    "ln", "%", "n!", "e", "x<sup>2</sup>",
+    "x<sup>3</sup>", "x<sup>y</sup>"
+]
 const textField = document.getElementById("calculator__top-field");
 const numericButtonSection = document.getElementById("calculator__bottom-normal-button-numeric");
 const operationsButtonSection = document.getElementById("calculator__bottom-normal-button-operations");
@@ -23,6 +27,13 @@ for(let button=0; button<scientificSymbols.length; button++){
     const scientificButtonElement = document.createElement("button");
     scientificButtonElement.innerHTML = scientificSymbols[button];
     scientificButtonElement.classList.add("calculator-styled-buttons");
+    scientificButtonElement.addEventListener("click", ()=>{
+        if(scientificSymbols[button] === "(" || scientificSymbols[button] === ")"){
+            textField.innerHTML += scientificSymbols[button];
+        }else if(scientificSymbols[button] === "%"){
+            textField.innerHTML += scientificSymbols[button];
+        }
+    })
     scientificButtonSection.appendChild(scientificButtonElement);
 }
 
@@ -49,7 +60,6 @@ for(let button=0; button<operationsButtonSymbols.length; button++){
     operationsButtonSection.appendChild(operationButtonElement);
 }
 
-
 const backSpace = () =>{
     textField.innerHTML = textField.innerHTML.substring(0, textField.innerHTML.length - 1);
 }
@@ -66,5 +76,11 @@ const answerMemory = () =>{
 }
 
 const calculation = () =>{
+    for(let field=0; field<textField.innerHTML.length; field++){
+        if(textField.innerHTML[field] == "%"){
+            
+            console.log(textField.innerHTML[textField.innerHTML.length - 2])
+        }
+    }
     answerSection.innerHTML = Function(`return(${textField.innerHTML})`)();
 }
