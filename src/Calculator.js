@@ -1,11 +1,10 @@
-
 const numericButtonSymbols = ["7", "8", "9", "4", "5", "6", "1", "2", "3", "0", "."];
 const operationsButtonSymbols = ["DEL", "AC", "*", "/", "+", "-", "ANS", "="];
 const scientificSymbols = [
     "Abs", "Log", "sin", "cos", "tan", "(" , ")", 
     "ln", "%", "n!", "e", "x<sup>2</sup>",
     "x<sup>3</sup>", "x<sup>y</sup>"
-]
+];
 const textField = document.getElementById("calculator__top-field");
 const numericButtonSection = document.getElementById("calculator__bottom-normal-button-numeric");
 const operationsButtonSection = document.getElementById("calculator__bottom-normal-button-operations");
@@ -32,6 +31,8 @@ for(let button=0; button<scientificSymbols.length; button++){
             textField.innerHTML += scientificSymbols[button];
         }else if(scientificSymbols[button] === "%"){
             textField.innerHTML += scientificSymbols[button];
+        }else if(scientificSymbols[button] === "e"){
+            textField.innerHTML += "*" + scientificSymbols[button];
         }
     })
     scientificButtonSection.appendChild(scientificButtonElement);
@@ -54,7 +55,7 @@ for(let button=0; button<operationsButtonSymbols.length; button++){
             resetMemory();
         }
         else{
-            textField.innerHTML += operationsButtonSymbols[button]
+            textField.innerHTML += operationsButtonSymbols[button];
         }
     })
     operationsButtonSection.appendChild(operationButtonElement);
@@ -72,15 +73,9 @@ const resetMemory = () => {
 const answerMemory = () =>{
     let answerMemory = answerSection.innerHTML;
     textField.innerHTML = answerMemory;
-    console.log(textField)
 }
 
 const calculation = () =>{
-    for(let field=0; field<textField.innerHTML.length; field++){
-        if(textField.innerHTML[field] == "%"){
-            
-            console.log(textField.innerHTML[textField.innerHTML.length - 2])
-        }
-    }
+    console.log(textField.innerHTML)
     answerSection.innerHTML = Function(`return(${textField.innerHTML})`)();
 }
