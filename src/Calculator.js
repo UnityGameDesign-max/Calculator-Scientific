@@ -1,9 +1,9 @@
 const numericButtonSymbols = ["7", "8", "9", "4", "5", "6", "1", "2", "3", "0", "."];
-const operationsButtonSymbols = ["DEL", "AC", "*", "/", "+", "-", "ANS", "="];
+const operationsButtonSymbols = ["DEL", "AC", "x", "/", "+", "-", "ANS", "="];
 const scientificSymbols = [
     "Abs", "Log", "sin", "cos", "tan", "(" , ")", 
     "ln", "%", "n!", "e", "x<sup>2</sup>",
-    "x<sup>3</sup>", "x<sup>y</sup>"
+    "x<sup>3</sup>", "x<sup>y</sup>", "π"
 ];
  
 let textField = document.getElementById("calculator__top-field");
@@ -34,18 +34,23 @@ for(let button=0; button<scientificSymbols.length; button++){
     scientificButtonElement.innerHTML = scientificSymbols[button];
     scientificButtonElement.classList.add("calculator-styled-buttons");
     scientificButtonElement.addEventListener("click", ()=>{
-        if(scientificSymbols[button] === "(" || scientificSymbols[button] === ")"){
+        if(scientificSymbols[button] === "("){
             textField.innerHTML += scientificSymbols[button];
         }else if(scientificSymbols[button] === "%"){
             textField.innerHTML += scientificSymbols[button];
-            
         }else if(scientificSymbols[button] === "e"){
             textField.innerHTML += scientificSymbols[button];
+            scientificButtonElement.setAttribute()
+        }else if(scientificSymbols[button] === "sin"){
+            sin();
+        }else if(scientificSymbols[button] === "cos"){
+            textField.innerHTML += scientificSymbols[button] + "("
+        }else if(scientificSymbols[button] === "Log"){
+            textField.innerHTML += scientificSymbols[button] + "(";
         }
     })
     scientificButtonSection.appendChild(scientificButtonElement);
 }
-
 
 for(let button=0; button<operationsButtonSymbols.length; button++){
     const operationButtonElement = document.createElement("button");
@@ -54,8 +59,10 @@ for(let button=0; button<operationsButtonSymbols.length; button++){
     operationButtonElement.addEventListener("click",()=>{
         if(operationsButtonSymbols[button] === "DEL"){
             backSpace();
+        }else if(operationsButtonSymbols[button] === "x"){
+            operationsButtonSymbols[button] = "*";
         }else if(operationsButtonSymbols[button] === "="){
-            calculation();
+            equals();
         }else if(operationsButtonSymbols[button] === "ANS"){
             answerMemory();
         }else if(operationsButtonSymbols[button] === "AC"){
@@ -72,6 +79,24 @@ const backSpace = () =>{
     textField.innerHTML = textField.innerHTML.substring(0, textField.innerHTML.length - 1);
 }
 
+const equals = () => {
+    let indexOfUpperValue = textField.innerHTML.indexOf("^");
+    if(indexOfUpperValue > -1){
+        let base = (textField.innerHTML).slice(0, indexOfUpperValue);
+        let exponent = (textField.innerHTML).slice(0, indexOfUpperValue + 1)
+        answerSection.innerHTML = Function(`return(Math.pow(" + ${base} + "," + ${exponent}))`)();
+    }else{
+        answerSection.innerHTML += "";
+        answerSection.innerHTML = Function(`return(${textField.innerHTML})`)();                           
+    }
+}
+
+const sinEvaluation = () =>{
+    textField.innerHTML = Math.sin(textField.innerHTML);
+}
+const cosEvaluation = () => {
+    textField.innerHTML = Math.cos(textField.innerHTML);
+}
 const resetMemory = () => {
     textField.innerHTML = "";
     answerSection.innerHTML = "";
@@ -83,12 +108,11 @@ const answerMemory = () =>{
 }
 
 const calculation = () =>{
+    let answerField = "";
     for(let i=0; i<textField.innerHTML.length; i++){
-        if(textField.innerHTML[i] === "%"){
-            
-        }
+        answerField += textField.innerHTML[i];
     }
-    console.log(textField.innerHTML);
+    console.log(answerField);
     console.log(percentageConversion(textField.innerHTML));
-    answerSection.innerHTML = Function(`return(${textField.innerHTML})`)();
+    answerSection.innerHTML = Function(`return(${answerField})`)();
 }
