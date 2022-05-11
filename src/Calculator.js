@@ -5,11 +5,13 @@ const scientificSymbols = [
     "ln", "%", "n!", "e", "x<sup>2</sup>",
     "x<sup>3</sup>", "x<sup>y</sup>"
 ];
-const textField = document.getElementById("calculator__top-field");
+ 
+let textField = document.getElementById("calculator__top-field");
 const numericButtonSection = document.getElementById("calculator__bottom-normal-button-numeric");
 const operationsButtonSection = document.getElementById("calculator__bottom-normal-button-operations");
 const answerSection = document.getElementById("calculator__top-answer");
 const scientificButtonSection = document.getElementById("calculator___bottom-scientific-button");
+const EULER_NUMBER = "2.71828182846";
 
 
 for(let button=0; button<numericButtonSymbols.length; button++){
@@ -22,6 +24,11 @@ for(let button=0; button<numericButtonSymbols.length; button++){
     numericButtonSection.appendChild(NormalbuttonElement);
 }
 
+const percentageConversion = (percentageStr) => {
+    let percentage = percentageStr.substring(0, percentageStr.length - 1);
+    return percentage * 1/100;
+}
+
 for(let button=0; button<scientificSymbols.length; button++){
     const scientificButtonElement = document.createElement("button");
     scientificButtonElement.innerHTML = scientificSymbols[button];
@@ -31,8 +38,9 @@ for(let button=0; button<scientificSymbols.length; button++){
             textField.innerHTML += scientificSymbols[button];
         }else if(scientificSymbols[button] === "%"){
             textField.innerHTML += scientificSymbols[button];
+            
         }else if(scientificSymbols[button] === "e"){
-            textField.innerHTML += "*" + scientificSymbols[button];
+            textField.innerHTML += scientificSymbols[button];
         }
     })
     scientificButtonSection.appendChild(scientificButtonElement);
@@ -46,8 +54,7 @@ for(let button=0; button<operationsButtonSymbols.length; button++){
     operationButtonElement.addEventListener("click",()=>{
         if(operationsButtonSymbols[button] === "DEL"){
             backSpace();
-        }
-        else if(operationsButtonSymbols[button] === "="){
+        }else if(operationsButtonSymbols[button] === "="){
             calculation();
         }else if(operationsButtonSymbols[button] === "ANS"){
             answerMemory();
@@ -67,7 +74,7 @@ const backSpace = () =>{
 
 const resetMemory = () => {
     textField.innerHTML = "";
-    answerSection.innerHTML = "0";
+    answerSection.innerHTML = "";
 }
 
 const answerMemory = () =>{
@@ -76,6 +83,12 @@ const answerMemory = () =>{
 }
 
 const calculation = () =>{
-    console.log(textField.innerHTML)
+    for(let i=0; i<textField.innerHTML.length; i++){
+        if(textField.innerHTML[i] === "%"){
+            
+        }
+    }
+    console.log(textField.innerHTML);
+    console.log(percentageConversion(textField.innerHTML));
     answerSection.innerHTML = Function(`return(${textField.innerHTML})`)();
 }
