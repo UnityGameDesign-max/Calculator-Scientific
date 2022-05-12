@@ -54,6 +54,10 @@ body{
     gap: 0.3em;
 }
 
+.toggle-radians-degrees{
+    background-color: var(--COLOR-PRIMARY);
+}
+
 .calculator__bottom-normal-button-numeric{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
