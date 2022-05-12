@@ -1,3 +1,5 @@
+const { evaluate } = require("mathjs");
+const mathExperession = require("mathjs");
 const numericButtonSymbols = ["7", "8", "9", "4", "5", "6", "1", "2", "3", "0", "."];
 const operationsButtonSymbols = ["DEL", "AC", "x", "/", "+", "-", "ANS", "="];
 const scientificSymbols = [
@@ -110,8 +112,8 @@ const backSpace = () =>{
 }
 
 const equals = () => {
-    answerSection.innerHTML += "";
-    answerSection.innerHTML = Function(`return(${textField.innerHTML})`)();                       
+    answerSection.innerHTML += "";                   
+    answerSection.innerHTML = evaluate(textField.innerHTML);                          
 }
 
 const logEvaluation = () =>{
