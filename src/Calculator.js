@@ -3,9 +3,8 @@ const mathExperession = require("mathjs");
 const numericButtonSymbols = ["7", "8", "9", "4", "5", "6", "1", "2", "3", "0", "."];
 const operationsButtonSymbols = ["DEL", "AC", "x", "/", "+", "-", "ANS", "="];
 const scientificSymbols = [
-    "Abs", "Log", "sin", "cos", "tan", "rad" , "deg", 
-    "ln", "%", "n!", "e", "x<sup>2</sup>",
-    "x<sup>3</sup>", "x<sup>y</sup>", "π"
+    "Abs", "Log", "sin", "cos", "tan", "rad" , "deg", "%", "x<sup>2</sup>",
+    "x<sup>3</sup>", "x<sup>y</sup>"
 ];
  
 let textField = document.getElementById("calculator__top-field");
@@ -15,27 +14,6 @@ const answerSection = document.getElementById("calculator__top-answer");
 const scientificButtonSection = document.getElementById("calculator___bottom-scientific-button");
 const EULER_NUMBER = "2.71828182846";
 
-// const basicCalculation = (param1, param2, operation) => {
-//     let param1 = parseFloat(param1);
-//     let param2 = parseFloat(param2);
-//     let returnValue = 0;
-
-//     switch (operation){
-//         case "+":
-//             returnValue = param1 + param2;
-//         break;
-//         case "-":
-//             returnValue = param1 - param2;
-//         break;
-//         case "*":
-//             returnValue = param1 * param2;
-//         break;
-//         case "/":
-//             returnValue = param1 /param2;
-//         break;
-//     }
-//     return returnValue;
-// }
 
 for(let button=0; button<numericButtonSymbols.length; button++){
     const NormalbuttonElement = document.createElement("button");
