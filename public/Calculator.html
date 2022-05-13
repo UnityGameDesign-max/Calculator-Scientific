@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer src="../dist/build.js"></script>
+    <script defer src="../src/Calculator.js"></script>
     <link rel="stylesheet" href="../styles/style.css">
     <title>Calculator</title>
 </head>
@@ -15,10 +15,45 @@
             <p id="calculator__top-answer" class="calculator__top-answer"></p>
         </section>
         <section class="calculator__bottom">
-            <section id="calculator___bottom-scientific-button" class="calculator___bottom-scientific-button"></section>
+            <section id="calculator___bottom-scientific-button" class="calculator___bottom-scientific-button">
+                <button class="scientific-symbol">Abs</button>
+                <button class="scientific-symbol">Log</button>
+                <button class="scientific-symbol">sin</button>
+                <button class="scientific-symbol">cos</button>
+                <button class="scientific-symbol">tan</button>
+                <button class="scientific-symbol">&radic;</button>
+                <button class="scientific-symbol">deg</button>
+                <button class="scientific-symbol">%</button>
+                <button class="scientific-symbol">(</button>
+                <button class="scientific-symbol">)</button>
+                <button class="scientific-symbol">x<sup>2</sup></button>
+                <button class="scientific-symbol">x<sup>3</sup></button>
+                <button class="scientific-symbol">x<sup>y</sup></button>
+            </section>
             <section class="calculator___bottom-normal-button">
-                <section id="calculator__bottom-normal-button-numeric" class="calculator__bottom-normal-button-numeric"></section>
-                <section id="calculator__bottom-normal-button-operations" class="calculator__bottom-normal-button-operations"></section>
+                <section id="calculator__bottom-normal-button-numeric" class="calculator__bottom-normal-button-numeric">
+                    <button class="number">7</button>
+                    <button class="number">8</button>
+                    <button class="number">9</button>
+                    <button class="number">4</button>
+                    <button class="number">5</button>
+                    <button class="number">6</button>
+                    <button class="number">1</button>
+                    <button class="number">2</button>
+                    <button class="number">3</button>
+                    <button class="number">0</button>
+                    <button class="number">.</button>
+                </section>
+                <section id="calculator__bottom-normal-button-operations" class="calculator__bottom-normal-button-operations">
+                    <button>DEL</button>
+                    <button>AC</button>
+                    <button>x</button>
+                    <button>/</button>
+                    <button>+</button>
+                    <button>-</button>
+                    <button>ANS</button>
+                    <button>=</button>
+                </section>
             </section>
         </section>
     </section>

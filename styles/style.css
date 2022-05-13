@@ -69,7 +69,7 @@ body{
     grid-template-columns: repeat(2, 1fr);
     gap: 0.6em;
 }
-.calculator-styled-buttons{
+button{
     border: none;
     padding: 0.8em 1.3em;
     color: var(--COLOR-SECONDARY);
@@ -80,7 +80,7 @@ body{
     background-color: var(--COLOR-TERTIARY-200);
 }
 
-.calculator-styled-buttons:active{
+button:active{
     background-color: #dce2e7;
     background-size: 100%;
     transition: background 0s;
