@@ -54,8 +54,10 @@ body{
     gap: 0.3em;
 }
 
-.toggle-radians-degrees{
-    background-color: var(--COLOR-PRIMARY);
+.calculator__top-temp-answer{
+    position: absolute;
+    left: 40px;
+    bottom: 20px;
 }
 
 .calculator__bottom-normal-button-numeric{

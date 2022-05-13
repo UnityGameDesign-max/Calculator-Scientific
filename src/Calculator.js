@@ -1,23 +1,76 @@
 
-const scientificSymbols = [ "Abs", "Log", "sin", "cos", "tan", "rad" , "deg", "%", "x<sup>2</sup>","x<sup>3</sup>", "x<sup>y</sup>" ];
+let isComma = false;
+
+const scientificButton = document.querySelectorAll(".scientific-symbol");
+const numberButtons = document.querySelectorAll(".number");
+const clearAllButton = document.querySelector(".clear-all");
+const equalButton = document.querySelector(".equal");
+const operationButton = document.querySelectorAll(".operation");
+
+const textField = document.getElementById("calculator__top-field");
+const answerField = document.getElementById("calculator__top-answer");
+const temporaryAnswerField = document.getElementById("calculator__top-temp-answer");
+const removeLastValueButton = document.querySelector(".delete-last-value");
+
+let operation ="";
+let displayNumber2 = "";
+let displayNumber1 = "";
+let result = null;
+
+console.log(scientificButton)
 
 
-const BasicCalc = (value1, value2, operator) =>{
-    const previousNumber = parseFloat(value1);
-    const currentNumber = parseFloat(value2);
-    let resultValue;
+scientificButton.forEach( scientificSymbol =>{
+    scientificSymbol.addEventListener("click", ()=>{
+        ScientificOperation(scientificSymbol.innerHTML)
+    })
+})
 
-    if(isNaN(previousNumber) || isNaN(currentNumber)) return
+const ScientificOperation = (scientificOperator) => {
+    const previousNumber = parseFloat(result);
+    switch(scientificOperator){
+        case "sin":
+            result = Math.sin(previousNumber);
+            break;
+        case "cos":
+            result = Math.cos(previousNumber);
+            break;
+        case "tan":
+            result = Math.tan(previousNumber);
+            break;
+        case "Abs":
+            result = Math.sin(previousNumber);
+            break;
+        default:
+            break;
+    }
+}
 
-    switch(operator){
+numberButtons.forEach(numberSymbols =>{
+    numberSymbols.addEventListener("click", ()=>{
+        if(numberSymbols.innerHTML === "." && !isComma){
+            isComma = true;
+        }else if(numberSymbols.innerHTML === "." && isComma){
+            return;
+        }
+        displayNumber2 += numberSymbols.innerHTML;
+        textField.innerHTML = displayNumber2;
+    })
+})
+
+const BasicCalc = () =>{
+    const previousNumber = parseFloat(result);
+    const currentNumber = parseFloat(displayNumber2);
+
+    switch(operation){
         case "+":
-            resultValue = previousNumber + currentNumber;
+            result = previousNumber + currentNumber;
             break;
         case "-":
-            resultValue = previousNumber - currentNumber;
+            result = previousNumber - currentNumber;
             break;
-        case "*":
-            resultValue = previousNumber * currentNumber;
+        case "x":
+            result = previousNumber * currentNumber;
             break;
         case "/":
             resultValue = previousNumber / currentNumber;
@@ -26,34 +79,61 @@ const BasicCalc = (value1, value2, operator) =>{
             break;
     }
 }
- 
-let textField = document.getElementById("calculator__top-field");
-const numericButtonSection = document.getElementById("calculator__bottom-normal-button-numeric");
-const operationsButtonSection = document.getElementById("calculator__bottom-normal-button-operations");
-const answerSection = document.getElementById("calculator__top-answer");
-const scientificButtonSection = document.getElementById("calculator___bottom-scientific-button");
-const EULER_NUMBER = "2.71828182846";
 
-let isComma = false;
-
-// const buttonsScientific = document.querySelector(".calculator___bottom-scientific-button");
-const scientificButton = document.querySelectorAll(".scientific-symbol");
-const numberButtons = document.querySelectorAll(".number");
-console.log(scientificButton)
-let scientificDisplay;
-let scientificOperation = "";
-
-scientificButton.forEach( scientificSymbol =>{
-    scientificSymbol.addEventListener("click", ()=>{
-        textField.innerHTML = scientificOperation;
+operationButton.forEach( operationSymbol =>{
+    operationSymbol.addEventListener("click", ()=>{
+        if(!textField.innerHTML) return;
+        isComma = false;
+        const operationName = operationSymbol.innerHTML;
+        if(displayNumber1 && operation && displayNumber2){
+            BasicCalc();
+        }else{
+            result = parseFloat(displayNumber2);
+        }
+        operations(operationName)
+        operation = operationName;
+        console.log(result);
     })
 })
 
-numberButtons.forEach(numberSymbols =>{
-    numberSymbols.addEventListener("click", ()=>{
-        textField.innerHTML += numberSymbols.innerHTML;
-    })
+clearAllButton.addEventListener("click", ()=>{
+    inputDisplay = "";
+    answerDisplay = "";
+    result = "";
+    textField.innerHTML = "";
+    answerField.innerHTML = "";
 })
+
+const operations = (name = "") =>{
+    displayNumber1 += displayNumber2 + " " + name + " ";
+    textField.innerHTML = displayNumber1;
+    console.log(displayNumber1);
+    answerField.innerHTML = "";
+    displayNumber2 ="";
+    temporaryAnswerField.innerHTML = result;
+}
+
+equalButton.addEventListener("click", ()=>{
+    if (!displayNumber2 || !displayNumber1) return;
+    isComma = false;
+    BasicCalc();
+    operations();
+    answerField.innerHTML = result;
+    temporaryAnswerField.innerHTML = "";
+    displayNumber2 = result;
+    displayNumber1 = "";
+})
+
+removeLastValueButton.addEventListener("click", ()=>{
+    textField.innerText = "";
+    displayNumber2 = "";
+})
+
+// removeLastValueButton.addEventListener("click", ()=>{
+//     answerField.innerHTML = "";
+//     inputDisplay = "";
+// })
+
 
 // for(let button=0; button<numericButtonSymbols.length; button++){
 //     const NormalbuttonElement = document.createElement("button");

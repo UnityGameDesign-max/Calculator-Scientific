@@ -12,12 +12,13 @@
     <section class="calculator">
         <section class="calculator__top">
             <p id="calculator__top-field" class="calculator__top-field"></p>
-            <p id="calculator__top-answer" class="calculator__top-answer"></p>
+            <p id="calculator__top-answer" class="calculator__top-answer">0</p>
+            <p id="calculator__top-temp-answer" class="calculator__top-temp-answer"></p>
         </section>
         <section class="calculator__bottom">
             <section id="calculator___bottom-scientific-button" class="calculator___bottom-scientific-button">
                 <button class="scientific-symbol">Abs</button>
-                <button class="scientific-symbol">Log</button>
+                <button class="scientific-symbol">log</button>
                 <button class="scientific-symbol">sin</button>
                 <button class="scientific-symbol">cos</button>
                 <button class="scientific-symbol">tan</button>
@@ -45,14 +46,13 @@
                     <button class="number">.</button>
                 </section>
                 <section id="calculator__bottom-normal-button-operations" class="calculator__bottom-normal-button-operations">
-                    <button>DEL</button>
-                    <button>AC</button>
-                    <button>x</button>
-                    <button>/</button>
-                    <button>+</button>
-                    <button>-</button>
-                    <button>ANS</button>
-                    <button>=</button>
+                    <button class="delete-last-value">DEL</button>
+                    <button class="clear-all">AC</button>
+                    <button class="operation">x</button>
+                    <button class="operation">/</button>
+                    <button class="operation">+</button>
+                    <button class="operation">-</button>
+                    <button class="equal">=</button>
                 </section>
             </section>
         </section>
