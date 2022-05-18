@@ -17,19 +17,19 @@
         </section>
         <section class="calculator__bottom">
             <section id="calculator___bottom-scientific-button" class="calculator___bottom-scientific-button">
-                <button onclick="scientificClick()" id="scientific-symbol">Abs</button>
-                <button onclick="scientificClick()" id="scientific-symbol">log</button>
-                <button onclick="scientificClick()" id="scientific-symbol">sin</button>
-                <button onclick="scientificClick()" id="scientific-symbol">cos</button>
-                <button onclick="scientificClick()" id="scientific-symbol">tan</button>
-                <button onclick="scientificClick()" id="scientific-symbol">&radic;</button>
-                <button onclick="scientificClick()" id="scientific-symbol">&#x221B;</button>
-                <button onclick="scientificClick()" id="scientific-symbol">%</button>
-                <button onclick="scientificClick()" id="scientific-symbol">(</button>
-                <button onclick="scientificClick()" id="scientific-symbol">)</button>
-                <button onclick="scientificClick()" id="scientific-symbol">x<sup>2</sup></button>
-                <button onclick="scientificClick()" id="scientific-symbol">x<sup>3</sup></button>
-                <button onclick="scientificClick()" id="scientific-symbol">x<sup>y</sup></button>
+                <button onclick="scientificClick('scientific-Abs')" id="scientific-Abs">Abs</button>
+                <button onclick="scientificClick('scientific-log')" id="scientific-log">log</button>
+                <button onclick="scientificClick('scientific-sin')" id="scientific-sin">sin</button>
+                <button onclick="scientificClick('scientific-cos')" id="scientific-cos">cos</button>
+                <button onclick="scientificClick('scientific-tan')" id="scientific-tan">tan</button>
+                <button onclick="scientificClick()" id="scientific-square-root">&radic;</button>
+                <button onclick="scientificClick()" id="scientific-cube-root">&#x221B;</button>
+                <button onclick="scientificClick()" id="scientific-percentage">%</button>
+                <button onclick="scientificClick('scientific-open-bracket')" id="scientific-open-bracket">(</button>
+                <button onclick="scientificClick('scientific-close-bracket')" id="scientific-close-bracket">)</button>
+                <button onclick="scientificClick()" id="scientific-square-root">x<sup>2</sup></button>
+                <button onclick="scientificClick()" id="scientific-cube-root">x<sup>3</sup></button>
+                <button onclick="scientificClick()" id="scientific-number-root">x<sup>y</sup></button>
             </section>
             <section class="calculator___bottom-normal-button">
                 <section id="calculator__bottom-normal-button-numeric" class="calculator__bottom-normal-button-numeric">
@@ -46,12 +46,12 @@
                     <button onclick="numberButtonClick('number-dot')" id="number-dot">.</button>
                 </section>
                 <section id="calculator__bottom-normal-button-operations" class="calculator__bottom-normal-button-operations">
-                    <button onclick="operatorButtonClick('')" id="delete-last-value">DEL</button>
-                    <button onclick="operatorButtonClick('')" id="clear-all">AC</button>
-                    <button onclick="operatorButtonClick('operation')" id="operation">x</button>
-                    <button onclick="operatorButtonClick('operation')" id="operation">/</button>
-                    <button onclick="operatorButtonClick('operation')" id="operation">+</button>
-                    <button onclick="operatorButtonClick('operation')" id="operation">-</button>
+                    <button class="delete-last-value">DEL</button>
+                    <button class="clear-all">AC</button>
+                    <button onclick="operatorButtonClick('operation-multiply')" id="operation-multiply">x</button>
+                    <button onclick="operatorButtonClick('operation-divide')" id="operation-divide">/</button>
+                    <button onclick="operatorButtonClick('operation-add')" id="operation-add">+</button>
+                    <button onclick="operatorButtonClick('operation-subtract')" id="operation-subtract">-</button>
                     <button class="equal">=</button>
                 </section>
             </section>
