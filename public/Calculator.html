@@ -17,41 +17,41 @@
         </section>
         <section class="calculator__bottom">
             <section id="calculator___bottom-scientific-button" class="calculator___bottom-scientific-button">
-                <button class="scientific-symbol">Abs</button>
-                <button class="scientific-symbol">log</button>
-                <button class="scientific-symbol">sin</button>
-                <button class="scientific-symbol">cos</button>
-                <button class="scientific-symbol">tan</button>
-                <button class="scientific-symbol">&radic;</button>
-                <button class="scientific-symbol">&#x221B;</button>
-                <button class="scientific-symbol">%</button>
-                <button class="scientific-symbol">(</button>
-                <button class="scientific-symbol">)</button>
-                <button class="scientific-symbol">x<sup>2</sup></button>
-                <button class="scientific-symbol">x<sup>3</sup></button>
-                <button class="scientific-symbol">x<sup>y</sup></button>
+                <button onclick="scientificClick()" id="scientific-symbol">Abs</button>
+                <button onclick="scientificClick()" id="scientific-symbol">log</button>
+                <button onclick="scientificClick()" id="scientific-symbol">sin</button>
+                <button onclick="scientificClick()" id="scientific-symbol">cos</button>
+                <button onclick="scientificClick()" id="scientific-symbol">tan</button>
+                <button onclick="scientificClick()" id="scientific-symbol">&radic;</button>
+                <button onclick="scientificClick()" id="scientific-symbol">&#x221B;</button>
+                <button onclick="scientificClick()" id="scientific-symbol">%</button>
+                <button onclick="scientificClick()" id="scientific-symbol">(</button>
+                <button onclick="scientificClick()" id="scientific-symbol">)</button>
+                <button onclick="scientificClick()" id="scientific-symbol">x<sup>2</sup></button>
+                <button onclick="scientificClick()" id="scientific-symbol">x<sup>3</sup></button>
+                <button onclick="scientificClick()" id="scientific-symbol">x<sup>y</sup></button>
             </section>
             <section class="calculator___bottom-normal-button">
                 <section id="calculator__bottom-normal-button-numeric" class="calculator__bottom-normal-button-numeric">
-                    <button class="number">7</button>
-                    <button class="number">8</button>
-                    <button class="number">9</button>
-                    <button class="number">4</button>
-                    <button class="number">5</button>
-                    <button class="number">6</button>
-                    <button class="number">1</button>
-                    <button class="number">2</button>
-                    <button class="number">3</button>
-                    <button class="number">0</button>
-                    <button class="number">.</button>
+                    <button onclick="numberButtonClick('number-7')" id="number-7">7</button>
+                    <button onclick="numberButtonClick('number-8')" id="number-8">8</button>
+                    <button onclick="numberButtonClick('number-9')" id="number-9">9</button>
+                    <button onclick="numberButtonClick('number-4')" id="number-4">4</button>
+                    <button onclick="numberButtonClick('number-5')" id="number-5">5</button>
+                    <button onclick="numberButtonClick('number-6')" id="number-6">6</button>
+                    <button onclick="numberButtonClick('number-1')" id="number-1">1</button>
+                    <button onclick="numberButtonClick('number-2')" id="number-2">2</button>
+                    <button onclick="numberButtonClick('number-3')" id="number-3">3</button>
+                    <button onclick="numberButtonClick('number-0')" id="number-0">0</button>
+                    <button onclick="numberButtonClick('number-dot')" id="number-dot">.</button>
                 </section>
                 <section id="calculator__bottom-normal-button-operations" class="calculator__bottom-normal-button-operations">
-                    <button class="delete-last-value">DEL</button>
-                    <button class="clear-all">AC</button>
-                    <button class="operation">x</button>
-                    <button class="operation">/</button>
-                    <button class="operation">+</button>
-                    <button class="operation">-</button>
+                    <button onclick="operatorButtonClick('')" id="delete-last-value">DEL</button>
+                    <button onclick="operatorButtonClick('')" id="clear-all">AC</button>
+                    <button onclick="operatorButtonClick('operation')" id="operation">x</button>
+                    <button onclick="operatorButtonClick('operation')" id="operation">/</button>
+                    <button onclick="operatorButtonClick('operation')" id="operation">+</button>
+                    <button onclick="operatorButtonClick('operation')" id="operation">-</button>
                     <button class="equal">=</button>
                 </section>
             </section>

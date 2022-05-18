@@ -1,6 +1,6 @@
-let isComma = false;
+
 const scientificButton = document.querySelectorAll(".scientific-symbol");
-const numberButtons = document.querySelectorAll(".number");
+const numberButtons = document.getElementById("number");
 const clearAllButton = document.querySelector(".clear-all");
 const equalButton = document.querySelector(".equal");
 const operationButton = document.querySelectorAll(".operation");
@@ -9,6 +9,8 @@ const answerField = document.getElementById("calculator__top-answer");
 const temporaryAnswerField = document.getElementById("calculator__top-temp-answer");
 const removeLastValueButton = document.querySelector(".delete-last-value");
 
+
+let isComma = false;
 let operation ="";
 let answerDisplay = "";
 let inputDisplay = "";
@@ -22,17 +24,42 @@ scientificButton.forEach( scientificSymbol =>{
     })
 })
 
-numberButtons.forEach(numberSymbols =>{
-    numberSymbols.addEventListener("click", ()=>{
-        if(numberSymbols.innerHTML === "." && !isComma){
-            isComma = true;
-        }else if(numberSymbols.innerHTML === "." && isComma){
-            return;
-        }
-        answerDisplay += numberSymbols.innerHTML;
-        textField.innerHTML = answerDisplay;
-    })
-})
+
+const numberButtonClick = (idButton) => {
+    const numberButtonIdText = document.getElementById(idButton).innerHTML;
+    if(numberButtonIdText === "." && !isComma){
+        isComma = true;
+    }else if(numberButtonIdText === "." && isComma){
+        return;
+    }
+    answerDisplay += numberButtonIdText;
+    textField.innerHTML = answerDisplay;
+}
+
+const operations = (name =" " ) =>{
+    inputDisplay += answerDisplay + " " + name + " ";
+    textField.innerHTML = inputDisplay;
+    answerField.innerHTML = "";
+    answerDisplay ="";
+    temporaryAnswerField.innerHTML = result;
+}
+
+const operatorButtonClick = (idButton) => {
+    const operatorButtonIdText = document.getElementById(idButton).innerHTML;
+    if(!textField.innerHTML) return;
+    isComma = false;
+    const operationName = operatorButtonIdText;
+    if(inputDisplay && operation && answerDisplay){
+        BasicCalculation();
+    }else{
+        result = parseFloat(answerDisplay);
+    }
+    operations(operationName)
+    operation = operationName;
+    console.log(result);
+
+}
+
 
 const BasicCalculation = () =>{
     const previousNumber = parseFloat(result);
@@ -56,37 +83,32 @@ const BasicCalculation = () =>{
     }
 }
 
-operationButton.forEach( operationSymbol =>{
-    operationSymbol.addEventListener("click", ()=>{
-        if(!textField.innerHTML) return;
-        isComma = false;
-        const operationName = operationSymbol.innerHTML;
-        if(inputDisplay && operation && answerDisplay){
-            BasicCalculation();
-        }else{
-            result = parseFloat(answerDisplay);
-        }
-        operations(operationName)
-        operation = operationName;
-        console.log(result);
-    })
-})
+// operationButton.forEach( operationSymbol =>{
+//     operationSymbol.addEventListener("click", ()=>{
+//         if(!textField.innerHTML) return;
+//         isComma = false;
+//         const operationName = operationSymbol.innerHTML;
+//         if(inputDisplay && operation && answerDisplay){
+//             BasicCalculation();
+//         }else{
+//             result = parseFloat(answerDisplay);
+//         }
+//         operations(operationName)
+//         operation = operationName;
+//         console.log(result);
+//     })
+// })
 
-clearAllButton.addEventListener("click", ()=>{
-    inputDisplay = "";
-    answerDisplay = "";
-    result = "";
-    textField.innerHTML = "";
-    answerField.innerHTML = "";
-})
 
-const operations = (name =" " ) =>{
-    inputDisplay += answerDisplay + " " + name + " ";
-    textField.innerHTML = inputDisplay;
-    answerField.innerHTML = "";
-    answerDisplay ="";
-    temporaryAnswerField.innerHTML = result;
-}
+
+// clearAllButton.addEventListener("click", ()=>{
+//     inputDisplay = "";
+//     answerDisplay = "";
+//     result = "";
+//     textField.innerHTML = "";
+//     answerField.innerHTML = "";
+// })
+
 
 equalButton.addEventListener("click", ()=>{
     if (!answerDisplay || !inputDisplay) return;
@@ -99,19 +121,24 @@ equalButton.addEventListener("click", ()=>{
     inputDisplay = "";
 })
 
+const radToDegrees = (angle) => {
+    let piValue = Math.PI;
+    return angle * (180/piValue);
+}
+
 const ScientificOperation = (scientificOperator) => {
     switch(scientificOperator){
         case "sin":
-            result = Math.sin(answerDisplay);
+            result = radToDegrees(Math.sin(answerDisplay));
             break;
         case "cos":
-            result = Math.cos(answerDisplay);
+            result = radToDegrees(Math.cos(answerDisplay));
             break;
         case "tan":
-            result = Math.tan(answerDisplay);
+            result = radToDegrees(Math.tan(answerDisplay));
             break;
         case "Abs":
-            result = Math.sin(answerDisplay);
+            result = radToDegress(Math.sin(answerDisplay));
             break;
         default:
             break;
