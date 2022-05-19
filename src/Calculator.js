@@ -68,6 +68,10 @@ function scientificButton(arg){
         input = Math.tan(input);
         answerField.innerHTML = input;
         break;
+    case 'Abs':
+        input = Math.abs(input);
+        answerField.innerHTML = input;
+        break;
     case 'log':
         input = Math.log(input);
         answerField.innerHTML = input;
@@ -94,6 +98,14 @@ function scientificButton(arg){
         break;
     case 'atan':
         input = Math.atan(input);
+        answerField.innerHTML = input;
+        break;
+    case '&radic;':
+        input = Math.sqrt(input);
+        answerField.innerHTML = input;
+        break;
+    case '&#x221B;':
+        input = Math.cbrt(input);
         answerField.innerHTML = input;
         break;
   }
