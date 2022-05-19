@@ -11,48 +11,47 @@
 <body>
     <section class="calculator">
         <section class="calculator__top">
-            <p id="calculator__top-field" class="calculator__top-field"></p>
-            <p id="calculator__top-answer" class="calculator__top-answer">0</p>
-            <p id="calculator__top-temp-answer" class="calculator__top-temp-answer"></p>
+            <p id="input" class="calculator__top-field"></p>
+            <p id="answer" class="calculator__top-answer">0</p>
         </section>
         <section class="calculator__bottom">
             <section id="calculator___bottom-scientific-button" class="calculator___bottom-scientific-button">
-                <button onclick="scientificClick('scientific-Abs')" id="scientific-Abs">Abs</button>
-                <button onclick="scientificClick('scientific-log')" id="scientific-log">log</button>
-                <button onclick="scientificClick('scientific-sin')" id="scientific-sin">sin</button>
-                <button onclick="scientificClick('scientific-cos')" id="scientific-cos">cos</button>
-                <button onclick="scientificClick('scientific-tan')" id="scientific-tan">tan</button>
-                <button onclick="scientificClick()" id="scientific-square-root">&radic;</button>
-                <button onclick="scientificClick()" id="scientific-cube-root">&#x221B;</button>
-                <button onclick="scientificClick()" id="scientific-percentage">%</button>
-                <button onclick="scientificClick('scientific-open-bracket')" id="scientific-open-bracket">(</button>
-                <button onclick="scientificClick('scientific-close-bracket')" id="scientific-close-bracket">)</button>
-                <button onclick="scientificClick()" id="scientific-square-root">x<sup>2</sup></button>
-                <button onclick="scientificClick()" id="scientific-cube-root">x<sup>3</sup></button>
-                <button onclick="scientificClick()" id="scientific-number-root">x<sup>y</sup></button>
+                <input type="button" onclick="scientificClick('scientific-Abs')" id="scientific-Abs" value="Abs"/>
+                <input type="button" onclick="scientificClick('scientific-log')" id="scientific-log" value="log" />
+                <input type="button" onclick="scientificClick('scientific-sin')" id="scientific-sin" value="sin" />
+                <input type="button" onclick="scientificClick('scientific-cos')" id="scientific-cos" value="cos"/>
+                <input type="button" onclick="scientificClick('scientific-tan')" id="scientific-tan" value="tan"/>
+                <input type="button" onclick="scientificClick()" id="scientific-square-root" value="&radic;"/>
+                <input type="button" onclick="scientificClick()" id="scientific-cube-root" value="&#x221B;" />
+                <input type="button" onclick="scientificClick()" id="scientific-percentage" value="%" />
+                <input type="button" onclick="scientificClick('scientific-open-bracket')" id="scientific-open-bracket" value="(" />
+                <input type="button" onclick="scientificClick('scientific-close-bracket')" id="scientific-close-bracket" value=")" />
+                <input type="button" onclick="scientificClick()" id="scientific-square-root" value="x^2" />
+                <input type="button" onclick="scientificClick()" id="scientific-cube-root" value="x^3" />
+                <input type="button" onclick="scientificClick()" id="scientific-number-root" value='x^y'>
             </section>
             <section class="calculator___bottom-normal-button">
                 <section id="calculator__bottom-normal-button-numeric" class="calculator__bottom-normal-button-numeric">
-                    <button onclick="numberButtonClick('number-7')" id="number-7">7</button>
-                    <button onclick="numberButtonClick('number-8')" id="number-8">8</button>
-                    <button onclick="numberButtonClick('number-9')" id="number-9">9</button>
-                    <button onclick="numberButtonClick('number-4')" id="number-4">4</button>
-                    <button onclick="numberButtonClick('number-5')" id="number-5">5</button>
-                    <button onclick="numberButtonClick('number-6')" id="number-6">6</button>
-                    <button onclick="numberButtonClick('number-1')" id="number-1">1</button>
-                    <button onclick="numberButtonClick('number-2')" id="number-2">2</button>
-                    <button onclick="numberButtonClick('number-3')" id="number-3">3</button>
-                    <button onclick="numberButtonClick('number-0')" id="number-0">0</button>
-                    <button onclick="numberButtonClick('number-dot')" id="number-dot">.</button>
+                    <input type="button" onclick="numericButton('7')" id="number-7" value="7"/>
+                    <input type="button" onclick="numericButton('8')" id="number-8" value="8"/>
+                    <input type="button" onclick="numericButton('9')" id="number-9" value="9"/>
+                    <input type="button" onclick="numericButton('4')" id="number-4" value="4"/>
+                    <input type="button" onclick="numericButton('5')" id="number-5" value="5"/>
+                    <input type="button" onclick="numericButton('6')" id="number-6" value="6"/>
+                    <input type="button" onclick="numericButton('1')" id="number-1" value="1"/>
+                    <input type="button" onclick="numericButton('2')" id="number-2" value="2"/>
+                    <input type="button" onclick="numericButton('3')" id="number-3" value="3"/>
+                    <input type="button" onclick="numericButton('0')" id="number-0" value="0"/>
+                    <input type="button" onclick="numericButton('.')" id="number-dot" value="."/>
                 </section>
                 <section id="calculator__bottom-normal-button-operations" class="calculator__bottom-normal-button-operations">
-                    <button class="delete-last-value">DEL</button>
-                    <button class="clear-all">AC</button>
-                    <button onclick="operatorButtonClick('operation-multiply')" id="operation-multiply">x</button>
-                    <button onclick="operatorButtonClick('operation-divide')" id="operation-divide">/</button>
-                    <button onclick="operatorButtonClick('operation-add')" id="operation-add">+</button>
-                    <button onclick="operatorButtonClick('operation-subtract')" id="operation-subtract">-</button>
-                    <button class="equal">=</button>
+                    <input type="button" class="delete-last-value" value="DEL" />
+                    <input type="button" onclick="clearAll()" class="clear-all" value="AC"/>
+                    <input type="button" onclick="operatorButton('*')" id="operation-multiply" value="*"/>
+                    <input type="button" onclick="operatorButton('/')" id="operation-divide" value="/"/>
+                    <input type="button" onclick="operatorButton('+')" id="operation-add" value="+"/>
+                    <input type="button" onclick="operatorButton('-')" id="operation-subtract" value="-"/>
+                    <input type="button" onclick="calculateQueue(queue)" class="equal" value="=" />
                 </section>
             </section>
         </section>

@@ -1,151 +1,90 @@
 
-const scientificButton = document.querySelectorAll(".scientific-symbol");
-const numberButtons = document.getElementById("number");
-const clearAllButton = document.querySelector(".clear-all");
-const equalButton = document.querySelector(".equal");
-const operationButton = document.querySelectorAll(".operation");
-const textField = document.getElementById("calculator__top-field");
-const answerField = document.getElementById("calculator__top-answer");
-const temporaryAnswerField = document.getElementById("calculator__top-temp-answer");
-const removeLastValueButton = document.querySelector(".delete-last-value");
 
+let queue = [];
+let input = 0;
 
-let isComma = false;
-let operation ="";
-let answerDisplay = "";
-let inputDisplay = "";
-let returnValue = "";
-let result = null;
+function calculateQueue(value){
+    if (input !==0) {
+    input = parseFloat(input);
 
-
-scientificButton.forEach( scientificSymbol =>{
-    scientificSymbol.addEventListener("click", ()=>{
-        ScientificOperation(scientificSymbol.innerHTML);
-    })
-})
-
-
-const numberButtonClick = (idButton) => {
-    const numberButtonIdText = document.getElementById(idButton).innerHTML;
-    if(numberButtonIdText === "." && !isComma){
-        isComma = true;
-    }else if(numberButtonIdText === "." && isComma){
-        return;
+        addToQueue(input);
     }
-    answerDisplay += numberButtonIdText;
-    textField.innerHTML = answerDisplay;
-}
+    let answer = value[0];
+    let dividedByZero = 0;
+    for (  let i = 2; i < value.length; i= i+2) {
 
-const operations = (name =" " ) =>{
-    inputDisplay += answerDisplay + " " + name + " ";
-    textField.innerHTML = inputDisplay;
-    answerField.innerHTML = "";
-    answerDisplay ="";
-    temporaryAnswerField.innerHTML = result;
-}
-
-const operatorButtonClick = (idButton) => {
-    const operatorButtonIdText = document.getElementById(idButton).innerHTML;
-    if(!textField.innerHTML) return;
-    isComma = false;
-    const operationName = operatorButtonIdText;
-    if(inputDisplay && operation && answerDisplay){
-        BasicCalculation();
-    }else{
-        result = parseFloat(answerDisplay);
+        switch (queue[i-1]) {
+            case '+':
+                answer+= value[i];
+                break;
+            case '-':
+                answer-= value[i];
+                break;
+            case '/':   
+              if (value[i] === 0)   dividedByZero = 1;
+              else      answer = answer / value[i];
+                break;
+            case'*': 
+            answer = answer * value[i];
+                break;
+        }
     }
-    operations(operationName)
-    operation = operationName;
-    console.log(result);
 
-}
-
-
-const BasicCalculation = () =>{
-    const previousNumber = parseFloat(result);
-    const currentNumber = parseFloat(answerDisplay);
-
-    switch(operation){
-        case "+":
-            result = previousNumber + currentNumber;
-            break;
-        case "-":
-            result = previousNumber - currentNumber;
-            break;
-        case "x":
-            result = previousNumber * currentNumber;
-            break;
-        case "/":
-            result = previousNumber / currentNumber;
-            break;
-        default:
-            break;
+    answer = answer.toFixed(10);
+    answer = parseFloat(answer);
+    if ( dividedByZero === 1) { 
+      clearAll();
+      document.getElementById("answer").innerHTML =  "ERROR";}
+    else{
+      document.getElementById("answer").innerHTML =  answer ;
+      input = answer;
+      queue = [];
     }
 }
 
-// operationButton.forEach( operationSymbol =>{
-//     operationSymbol.addEventListener("click", ()=>{
-//         if(!textField.innerHTML) return;
-//         isComma = false;
-//         const operationName = operationSymbol.innerHTML;
-//         if(inputDisplay && operation && answerDisplay){
-//             BasicCalculation();
-//         }else{
-//             result = parseFloat(answerDisplay);
-//         }
-//         operations(operationName)
-//         operation = operationName;
-//         console.log(result);
-//     })
-// })
-
-
-
-// clearAllButton.addEventListener("click", ()=>{
-//     inputDisplay = "";
-//     answerDisplay = "";
-//     result = "";
-//     textField.innerHTML = "";
-//     answerField.innerHTML = "";
-// })
-
-
-equalButton.addEventListener("click", ()=>{
-    if (!answerDisplay || !inputDisplay) return;
-    isComma = false;
-    BasicCalculation();
-    operations();
-    answerField.innerHTML = result;
-    temporaryAnswerField.innerHTML = "";
-    answerDisplay = result;
-    inputDisplay = "";
-})
-
-const radToDegrees = (angle) => {
-    let piValue = Math.PI;
-    return angle * (180/piValue);
+function addToQueue(input){
+    queue.push(input);
 }
 
-const ScientificOperation = (scientificOperator) => {
-    switch(scientificOperator){
-        case "sin":
-            result = radToDegrees(Math.sin(answerDisplay));
-            break;
-        case "cos":
-            result = radToDegrees(Math.cos(answerDisplay));
-            break;
-        case "tan":
-            result = radToDegrees(Math.tan(answerDisplay));
-            break;
-        case "Abs":
-            result = radToDegress(Math.sin(answerDisplay));
-            break;
-        default:
-            break;
+ function scientificButton(arg){
+   if (document.getElementById("answer").innerHTML == "0"){
+     document.getElementById("answer").innerHTML = "";
+   }
+   if(!(arg === ".") || !input.match(/[.]/)){
+      input += arg;
+      document.getElementById("answer").innerHTML += arg;
+   }
+}
+
+function clearAll() {
+    queue = [];
+    input = 0;
+    document.getElementById("answer").innerHTML = "0";
+}
+
+function numericButton(arg){
+    if ( document.getElementById("answer").innerHTML ===  "ERROR" || (document.getElementById("answer").innerHTML == "0" && arg != ".")){                     
+        document.getElementById("answer").innerHTML = ""; 
+    }
+
+    if (!(arg === ".") || !input.match(/[.]/)) {
+
+    input += arg;
+    document.getElementById("answer").innerHTML += arg;
     }
 }
 
-removeLastValueButton.addEventListener("click", ()=>{
-    textField.innerText = "";
-    answerDisplay = "";
-})
+
+function operatorButton(arg){
+    if (input !== 0 && input !== "-") {
+        input = parseFloat(input);
+        addToQueue(input);
+        addToQueue(arg);
+        document.getElementById("answer").innerHTML +=arg;
+        input = 0;
+    }
+    if (arg == "-"  && isNaN(queue[0]) && input !== "-"){
+      input ="-";
+      document.getElementById("answer").innerHTML = "-";
+  }
+}
