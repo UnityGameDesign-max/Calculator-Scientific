@@ -1,4 +1,5 @@
-
+const inputField = document.getElementById("input");
+const answerField = document.getElementById("answer");
 
 let queue = [];
 let input = 0;
@@ -21,8 +22,10 @@ function calculateQueue(value){
                 answer-= value[i];
                 break;
             case '/':   
-              if (value[i] === 0)   dividedByZero = 1;
-              else      answer = answer / value[i];
+              if (value[i] === 0)   
+              dividedByZero = 1;
+              else      
+              answer = answer / value[i];
                 break;
             case'*': 
             answer = answer * value[i];
@@ -34,9 +37,10 @@ function calculateQueue(value){
     answer = parseFloat(answer);
     if ( dividedByZero === 1) { 
       clearAll();
-      document.getElementById("answer").innerHTML =  "ERROR";}
+      inputField.innerHTML =  "ERROR";
+    }
     else{
-      document.getElementById("answer").innerHTML =  answer ;
+      answerField.innerHTML =  answer ;
       input = answer;
       queue = [];
     }
@@ -46,31 +50,70 @@ function addToQueue(input){
     queue.push(input);
 }
 
- function scientificButton(arg){
-   if (document.getElementById("answer").innerHTML == "0"){
-     document.getElementById("answer").innerHTML = "";
-   }
-   if(!(arg === ".") || !input.match(/[.]/)){
-      input += arg;
-      document.getElementById("answer").innerHTML += arg;
-   }
+function radiansToDegrees(angle){
+
+}
+
+function scientificButton(arg){
+  switch(arg){
+    case 'sin':
+        input = Math.sin(input);
+        answerField.innerHTML = input;
+        break;
+    case 'cos':
+        input = Math.cos(input);
+        answerField.innerHTML = input;
+        break;
+    case 'tan':
+        input = Math.tan(input);
+        answerField.innerHTML = input;
+        break;
+    case 'log':
+        input = Math.log(input);
+        answerField.innerHTML = input;
+        break;
+    case 'x^2':
+        input = Math.pow(input, 2);
+        answerField.innerHTML = input;
+        break;
+    case 'x^3':
+        input = Math.pow(input, 3);
+        answerField.innerHTML = input;
+        break;
+    case '%':
+        input = input * 1/100;
+        answerField.innerHTML = input;
+        break;
+    case 'acos':
+        input = Math.acos(input);
+        answerField.innerHTML = input;
+        break;
+    case 'asin':
+        input = Math.asin(input);
+        answerField.innerHTML = input;
+        break;
+    case 'atan':
+        input = Math.atan(input);
+        answerField.innerHTML = input;
+        break;
+  }
 }
 
 function clearAll() {
     queue = [];
     input = 0;
-    document.getElementById("answer").innerHTML = "0";
+    answerField.innerHTML = "";
+    inputField.innerHTML = "0";
 }
 
 function numericButton(arg){
-    if ( document.getElementById("answer").innerHTML ===  "ERROR" || (document.getElementById("answer").innerHTML == "0" && arg != ".")){                     
-        document.getElementById("answer").innerHTML = ""; 
+    if ( inputField.innerHTML ===  "ERROR" || (inputField.innerHTML == "0" && arg != ".")){                     
+        inputField.innerHTML = ""; 
     }
-
     if (!(arg === ".") || !input.match(/[.]/)) {
 
     input += arg;
-    document.getElementById("answer").innerHTML += arg;
+    inputField.innerHTML += arg;
     }
 }
 
@@ -80,11 +123,11 @@ function operatorButton(arg){
         input = parseFloat(input);
         addToQueue(input);
         addToQueue(arg);
-        document.getElementById("answer").innerHTML +=arg;
+        inputField.innerHTML +=arg;
         input = 0;
     }
     if (arg == "-"  && isNaN(queue[0]) && input !== "-"){
       input ="-";
-      document.getElementById("answer").innerHTML = "-";
+      inputField.innerHTML = "-";
   }
 }
