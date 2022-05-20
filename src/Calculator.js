@@ -51,21 +51,22 @@ function addToQueue(input){
 }
 
 function radiansToDegrees(angle){
-
+    let pi = Math.PI;
+    return degrees * (pi/180);
 }
 
 function scientificButton(arg){
   switch(arg){
     case 'sin':
-        input = Math.sin(input);
+        input = Math.sin(radiansToDegrees(input));
         answerField.innerHTML = input;
         break;
     case 'cos':
-        input = Math.cos(input);
+        input = Math.cos(radiansToDegrees(input));
         answerField.innerHTML = input;
         break;
     case 'tan':
-        input = Math.tan(input);
+        input = Math.tan(radiansToDegrees(input));
         answerField.innerHTML = input;
         break;
     case 'Abs':
@@ -89,15 +90,15 @@ function scientificButton(arg){
         answerField.innerHTML = input;
         break;
     case 'acos':
-        input = Math.acos(input);
+        input = Math.acos(radiansToDegrees(input));
         answerField.innerHTML = input;
         break;
     case 'asin':
-        input = Math.asin(input);
+        input = Math.asin(radiansToDegrees(input));
         answerField.innerHTML = input;
         break;
     case 'atan':
-        input = Math.atan(input);
+        input = Math.atan(radiansToDegrees(input));
         answerField.innerHTML = input;
         break;
     case '&radic;':
